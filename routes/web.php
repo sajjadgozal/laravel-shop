@@ -34,5 +34,6 @@ Route::prefix('admin')->group(function () {
     })->name('dashboard');
 
     Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
     
 });
