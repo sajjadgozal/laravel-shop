@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('price');
-            $table->integer('inventory');
+            $table->integer('inventory')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 

@@ -22,7 +22,7 @@ class CreateDiscountsTable extends Migration
             $table->decimal('discount_present', $precision = 4, $scale = 2);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('users')->on('id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

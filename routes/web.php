@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -33,8 +34,7 @@ Route::prefix('admin')->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductController::class);
-    Route::resource('products', ProductController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class);
     
 });

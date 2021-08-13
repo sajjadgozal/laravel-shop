@@ -38,7 +38,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:256',
+            'parent_id' => '',
+        ]);
+
+        Category::create([
+            'name' => $validated['name'] , 
+            // 'parent_id' => $validated['parent_id'],
+        ]);
+
+        return response()->json([
+            'massage' => 'added'
+        ],200);
     }
 
     /**
@@ -49,7 +61,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return response()->json([
+            'massage' => 'show'
+        ],200);
     }
 
     /**
@@ -72,7 +86,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:256',
+            'parent_id' => ''
+        ]);
+        
+        $category->update([
+            "name" => $validated['name'] , 
+            // "parent_id" => $validated['parent_id'] ,
+        ]);
+
+        return response()->json([
+            'massage' => 'edited'
+        ],200);
     }
 
     /**
@@ -83,6 +109,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return response()->json([
+            'massage' => 'deleted'
+        ],200);
     }
 }
