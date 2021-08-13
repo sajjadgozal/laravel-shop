@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:256',
+            'price' => 'required|max:600',
+            'description'=> 'required',
+            'category_id'=> 'required'
+        ]);
+
+        Product::create([
+            'name' => $validated['name'] , 
+            'price' => $validated['price'],
+            'description' => $validated['description'],
+            'category_id' => $validated['category_id'],
+        ]);
+
+        return response()->json([
+            'massage' => 'added'
+        ],200);
     }
 
     /**
@@ -46,7 +62,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json([
+            'massage' => 'show'
+        ],200);
     }
 
     /**
@@ -69,7 +87,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:256',
+            'price' => 'required|max:600',
+            'description'=> 'required',
+            'category_id'=> 'required'
+        ]);
+
+        
+        $product->update([
+            'name' => $validated['name'] , 
+            'price' => $validated['price'],
+            'description' => $validated['description'],
+            'category_id' => $validated['category_id'],
+        ]);
+
+        return response()->json([
+            'massage' => 'edited'
+        ],200);
     }
 
     /**
@@ -80,6 +115,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'massage' => 'deleted'
+        ],200);
     }
 }
