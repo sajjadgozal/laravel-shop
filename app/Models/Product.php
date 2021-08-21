@@ -22,5 +22,12 @@ class Product extends Model
         'category_id',
     ];
 
+    /**
+     * Get the user that added the product.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

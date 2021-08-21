@@ -62,4 +62,21 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the cart associated with the user.
+     */
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    /**
+     * Get the cart associated with the user.
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

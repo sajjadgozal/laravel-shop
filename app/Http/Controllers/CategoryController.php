@@ -40,11 +40,15 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:256',
+            'slug' => 'required|max:256',
+            'content' => 'required|max:256',
             'parent_id' => '',
         ]);
 
         Category::create([
-            'name' => $validated['name'] , 
+            'name' => $validated['name'] ,
+            'slug' => $validated['slug'] ,
+            "content" => $validated['content'] ,
             // 'parent_id' => $validated['parent_id'],
         ]);
 
@@ -88,11 +92,15 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:256',
+            'slug' => 'required|max:256',
+            'content' => 'required|max:256',
             'parent_id' => ''
         ]);
-        
+
         $category->update([
-            "name" => $validated['name'] , 
+            "name" => $validated['name'] ,
+            "slug" => $validated['slug'] ,
+            "content" => $validated['content'] ,
             // "parent_id" => $validated['parent_id'] ,
         ]);
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -17,14 +18,9 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('LandingPage', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [ProductController::class , 'index' ])->name('shop');
+
+Route::get('/cart', [CartController::class , 'show' ])->name('cart');
 
 
 // Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -35,6 +31,6 @@ Route::prefix('admin')->group(function () {
     })->name('dashboard');
 
     Route::resource('category', CategoryController::class);
-    Route::resource('product', ProductController::class);
-    
+    Route::resource('product', ProductController::class)->except('index');
+
 });

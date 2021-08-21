@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return Inertia::render('LandingPage', [
+            'products' => $products
+        ]);
+    }
+
+    /**
+     * gets a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAll()
+    {
+        $products = Product::all();
+        return response()->json([
+            'massage' => 'getAll',
+            'products' => $products
+        ],200);
     }
 
     /**
@@ -43,7 +63,7 @@ class ProductController extends Controller
         ]);
 
         Product::create([
-            'name' => $validated['name'] , 
+            'name' => $validated['name'] ,
             'price' => $validated['price'],
             'description' => $validated['description'],
             'category_id' => $validated['category_id'],
@@ -94,9 +114,9 @@ class ProductController extends Controller
             'category_id'=> 'required'
         ]);
 
-        
+
         $product->update([
-            'name' => $validated['name'] , 
+            'name' => $validated['name'] ,
             'price' => $validated['price'],
             'description' => $validated['description'],
             'category_id' => $validated['category_id'],

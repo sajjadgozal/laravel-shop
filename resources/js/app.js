@@ -14,8 +14,10 @@ Vue.use(Vuetify);
 
 const app = document.getElementById('app');
 
+Vue.prototype.$route = route
+
 new Vue({
-    vuetify: new Vuetify(), 
+    vuetify: new Vuetify(),
     render: (h) =>
         h(InertiaApp, {
             props: {
