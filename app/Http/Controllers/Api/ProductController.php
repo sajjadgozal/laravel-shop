@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 
@@ -54,14 +53,16 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreProductRequest $request)
     {
 
         Product::create($request->validated());
 
-        return redirect()->back();
+        return response()->json([
+            'massage' => 'added'
+        ],200);
     }
 
     /**
@@ -72,9 +73,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-            return response()->json([
-                'massage' => 'show'
-            ],200);
+        return response()->json([
+            'massage' => 'show'
+        ],200);
     }
 
     /**
@@ -93,26 +94,30 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
 
         $product->update($request->validated());
 
-        return redirect()->back();
+        return response()->json([
+            'massage' => 'edited'
+        ],200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect()->back();
+        return response()->json([
+            'massage' => 'deleted'
+        ],200);
     }
 }
