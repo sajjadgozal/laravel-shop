@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
@@ -11,19 +12,6 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
-     */
-    public function index()
-    {
-        $products = Product::all();
-
-        return Inertia::render('LandingPage', [
-            'products' => $products
-        ]);
-    }
 
     /**
      * gets a listing of the resource.
@@ -37,16 +25,6 @@ class ProductController extends Controller
             'massage' => 'getAll',
             'products' => $products
         ],200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
     }
 
     /**
@@ -76,17 +54,6 @@ class ProductController extends Controller
         return response()->json([
             'massage' => 'show'
         ],200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
     }
 
     /**

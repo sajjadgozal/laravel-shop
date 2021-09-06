@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
     })->name('dashboard');
 
     Route::resource('category', CategoryController::class);
-    Route::resource('product', ProductController::class)->except('index');
+    Route::resource('product', ProductController::class);
+    
 
 });
