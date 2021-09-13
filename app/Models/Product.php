@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\CreatorOfModelTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, CreatorOfModelTrait;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -20,6 +21,7 @@ class Product extends Model
         'description',
         'inventory',
         'category_id',
+        'created_by_id',
     ];
 
     /**
@@ -29,5 +31,4 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

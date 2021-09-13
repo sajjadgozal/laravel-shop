@@ -20,9 +20,11 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('inventory')->default(0);
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('created_by_id');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('created_by_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

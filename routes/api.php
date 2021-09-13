@@ -5,8 +5,8 @@ use App\Http\Controllers\CartController;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,8 @@ Route::prefix('v1')->group(function () {
     Route::get('/remove-from-cart/{product}' ,  [CartController::class , 'removeFromCart' ])->name('removeFromCart');
 
     // Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
+    // Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
+        Route::prefix('admin')->group(function () {
 
         Route::get('/dashboard', function () {
             return Inertia::render('Dashboard');
