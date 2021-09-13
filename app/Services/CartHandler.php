@@ -45,7 +45,7 @@ class CartHandler
 
     public static function add($cart , $product)
     {
-//        dd($cart->products);
+
         if ( $cart->products->contains($product) ) {
 
             $pivotItem = $cart->products()->where('product_id', $product->id)->firstOrFail()->pivot;

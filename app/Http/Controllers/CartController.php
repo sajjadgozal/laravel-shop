@@ -22,16 +22,18 @@ class CartController extends Controller
 
     }
 
-    function addToCart(Request $request , Product $product): \Illuminate\Http\JsonResponse
+    function addToCart(Request $request , Product $product): \Illuminate\Http\RedirectResponse
     {
 
         $cart = CartHandler::getCart();
 
         CartHandler::add($cart,$product);
 
-        return response()->json([
-            'massage' => 'added to cart'
-        ],200);
+        return redirect()->back();
+
+//        return response()->json([
+//            'massage' => 'added to cart'
+//        ],200);
 
     }
 
