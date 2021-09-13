@@ -13,7 +13,7 @@ class CartHandler
     public static function getCart() {
 
         $oldCart = Cart::where('session_id', session()->getId())->with('products')->first();
-        dump(session()->getId());
+
         if (auth()->check() ) {
 
             $cart = Cart::where('user_id', auth()->id())->with('products')->first();
