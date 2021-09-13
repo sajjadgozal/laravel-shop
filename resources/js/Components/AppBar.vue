@@ -7,8 +7,6 @@
       prominent
       app
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
       <v-toolbar-title>
           Title
       </v-toolbar-title>
@@ -26,17 +24,27 @@
       <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
+
+        <v-btn v-on:click="logout">
+            Logout
+        </v-btn>
+
     </v-app-bar>
 
 </template>
-	
+
 <script>
 import AppLayout from "../Layouts/AppLayout"
 
 export default {
 
 	components: {
-		AppLayout,
-	}
+        AppLayout,
+    },
+    methods: {
+        logout() {
+            this.$inertia.post(route('logout'));
+        },
+    }
 };
 </script>

@@ -28,7 +28,6 @@ class StoreDiscountRequest extends FormRequest
             'name' => 'required|max:256',
             'present' => 'required',
             'description'=> 'required',
-            'user_id'=> 'required'
         ];
     }
 }

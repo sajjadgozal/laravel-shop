@@ -7,16 +7,19 @@
         <v-list>
           <v-list-item class="px-2">
             <v-list-item-avatar>
-              <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
+<!--                 <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>-->
+                <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
             </v-list-item-avatar>
           </v-list-item>
 
-          <v-list-item link>
+          <v-list-item v-bind:href="route('profile.show')">
             <v-list-item-content>
               <v-list-item-title class="text-h6">
-                Sandra Adams
+                  {{ $page.props.user.name }}
               </v-list-item-title>
-              <v-list-item-subtitle>sandra_a88@gmail.com</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                  {{ $page.props.user.email }}
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -36,15 +39,7 @@
                 </v-list-item-content>
             </v-list-item>
         </v-list>
-
-
-
-        
-
       </v-navigation-drawer>
-
-
-
 </template>
 
 <script>
@@ -61,7 +56,7 @@ export default {
             ]
         };
 		},
-		
+
 		components: {
 			Logo
 		}

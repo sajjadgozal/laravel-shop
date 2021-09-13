@@ -72,7 +72,7 @@
 
 <script>
 import layout from "@/Layouts/Layout";
-import delleteForm from "@/Components/DelleteForm"; 
+import delleteForm from "@/Components/DelleteForm";
 import editForm from "./edit";
 import createForm from "./create";
 
@@ -112,7 +112,7 @@ export default {
             },
             {
                 text: "user",
-                value: "user_id"
+                value: "created_by_id"
             },
             { text: "Actions", value: "actions", sortable: false }
         ],
@@ -121,7 +121,7 @@ export default {
     }),
 
     methods: {
-        
+
         editItem(item) {
             this.selectedItem = Object.assign({}, item);
             this.editDialog = true;

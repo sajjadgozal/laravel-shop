@@ -24,8 +24,8 @@ Route::get('/', [ProductController::class, 'shop'])->name('shop');
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 
-// Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
-Route::prefix('admin')->group(function () {
+ Route::prefix('admin')->middleware(['auth:sanctum'])->group(function () {
+//Route::prefix('admin')->group(function () {
 
 
     Route::get('/', function () {

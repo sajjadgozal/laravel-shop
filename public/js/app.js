@@ -1902,10 +1902,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  methods: {
+    logout: function logout() {
+      this.$inertia.post(route('logout'));
+    }
   }
 });
 
@@ -2068,11 +2076,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _logo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logo */ "./resources/js/Components/logo.vue");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4225,13 +4228,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["errors"],
   data: function data() {
@@ -4287,13 +4283,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4531,7 +4520,7 @@ __webpack_require__.r(__webpack_exports__);
         value: "present"
       }, {
         text: "user",
-        value: "user_id"
+        value: "created_by_id"
       }, {
         text: "Actions",
         value: "actions",
@@ -33903,8 +33892,6 @@ var render = function() {
       }
     },
     [
-      _c("v-app-bar-nav-icon"),
-      _vm._v(" "),
       _c("v-toolbar-title", [_vm._v("\n      Title\n  ")]),
       _vm._v(" "),
       _c("v-spacer"),
@@ -33928,7 +33915,11 @@ var render = function() {
         { attrs: { icon: "" } },
         [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("v-btn", { on: { click: _vm.logout } }, [
+        _vm._v("\n        Logout\n    ")
+      ])
     ],
     1
   )
@@ -34159,33 +34150,41 @@ var render = function() {
             "v-list-item",
             { staticClass: "px-2" },
             [
-              _c(
-                "v-list-item-avatar",
-                [
-                  _c("v-img", {
-                    attrs: {
-                      src: "https://randomuser.me/api/portraits/women/85.jpg"
-                    }
-                  })
-                ],
-                1
-              )
+              _c("v-list-item-avatar", [
+                _c("img", {
+                  staticClass: "h-8 w-8 rounded-full object-cover",
+                  attrs: {
+                    src: _vm.$page.props.user.profile_photo_url,
+                    alt: _vm.$page.props.user.name
+                  }
+                })
+              ])
             ],
             1
           ),
           _vm._v(" "),
           _c(
             "v-list-item",
-            { attrs: { link: "" } },
+            { attrs: { href: _vm.route("profile.show") } },
             [
               _c(
                 "v-list-item-content",
                 [
                   _c("v-list-item-title", { staticClass: "text-h6" }, [
-                    _vm._v("\n          Sandra Adams\n        ")
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(_vm.$page.props.user.name) +
+                        "\n              "
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("v-list-item-subtitle", [_vm._v("sandra_a88@gmail.com")])
+                  _c("v-list-item-subtitle", [
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(_vm.$page.props.user.email) +
+                        "\n              "
+                    )
+                  ])
                 ],
                 1
               )
@@ -38064,24 +38063,6 @@ var render = function() {
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "user_id", required: "" },
-                            model: {
-                              value: _vm.form.user_id,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "user_id", $$v)
-                              },
-                              expression: "form.user_id"
-                            }
-                          })
-                        ],
-                        1
                       )
                     ],
                     1
@@ -38267,24 +38248,6 @@ var render = function() {
                                 _vm.$set(_vm.form, "description", $$v)
                               },
                               expression: "form.description"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "user_id", required: "" },
-                            model: {
-                              value: _vm.form.user_id,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "user_id", $$v)
-                              },
-                              expression: "form.user_id"
                             }
                           })
                         ],

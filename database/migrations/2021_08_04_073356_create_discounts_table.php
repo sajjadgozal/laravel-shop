@@ -18,11 +18,11 @@ class CreateDiscountsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('code');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('created_by_id');
             $table->decimal('present', $precision = 4, $scale = 2);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('created_by_id')->references('id')->on('users');
         });
     }
 
