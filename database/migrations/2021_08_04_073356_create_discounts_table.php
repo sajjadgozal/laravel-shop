@@ -19,7 +19,7 @@ class CreateDiscountsTable extends Migration
             $table->text('description');
             $table->string('code');
             $table->unsignedBigInteger('user_id');
-            $table->decimal('discount_present', $precision = 4, $scale = 2);
+            $table->decimal('present', $precision = 4, $scale = 2);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

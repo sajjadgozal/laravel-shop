@@ -2,13 +2,13 @@
     <layout>
         <v-data-table
             :headers="headers"
-            :items="categories"
+            :items="products"
             sort-by="name"
             class="elevation-1"
         >
             <template v-slot:top>
                 <v-toolbar flat>
-                    <v-toolbar-title>Categories</v-toolbar-title>
+                    <v-toolbar-title>Products</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
 
                     <v-spacer></v-spacer>
@@ -72,7 +72,7 @@
 
 <script>
 import layout from "@/Layouts/Layout";
-import delleteForm from "@/Components/DelleteForm";
+import delleteForm from "@/Components/DelleteForm"; 
 import editForm from "./edit";
 import createForm from "./create";
 
@@ -84,18 +84,14 @@ export default {
         delleteForm
     },
 
-    props: ["categories", "errors"],
+    props: ["products", "errors"],
 
     data: () => ({
         createDialog: false,
         deleteDialog: false,
         editDialog: false,
-        delleteRouteName: "category.destroy",
+        delleteRouteName: "product.destroy",
         headers: [
-            {
-              text: 'id',
-              value: 'id'
-            },
             {
                 text: "Name",
                 align: "start",
@@ -103,14 +99,21 @@ export default {
                 value: "name"
             },
             {
-                text: "slug",
-                value: "slug"
+                text: "Price",
+                value: "price"
             },
                         {
-                text: "content",
-                value: "content"
+                text: "description",
+                value: "description"
             },
-
+            {
+                text: "Category",
+                value: "category_id"
+            },
+            {
+                text: "Owner",
+                value: "created_by_id"
+            },
             { text: "Actions", value: "actions", sortable: false }
         ],
 

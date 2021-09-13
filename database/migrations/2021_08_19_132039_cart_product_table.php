@@ -22,7 +22,7 @@ class CartProductTable extends Migration
             $table->timestamps();
 
             $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
         });
     }
 

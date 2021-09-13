@@ -21,33 +21,23 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return Inertia::render('Admin/Products', [
+        return Inertia::render('Admin/Product', [
             'products' => $products
         ]);
     }
 
     /**
-     * gets a listing of the resource.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Inertia\Response
      */
-    public function getAll()
+    public function shop()
     {
         $products = Product::all();
-        return response()->json([
-            'massage' => 'getAll',
+
+        return Inertia::render('LandingPage', [
             'products' => $products
-        ],200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
+        ]);
     }
 
     /**
@@ -58,7 +48,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-
         Product::create($request->validated());
 
         return redirect()->back();
@@ -75,17 +64,6 @@ class ProductController extends Controller
             return response()->json([
                 'massage' => 'show'
             ],200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
     }
 
     /**

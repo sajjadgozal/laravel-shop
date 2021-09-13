@@ -55,7 +55,9 @@ export default {
         return {
             menu: [
                 { title: "Dashboard", icon: "mdi-view-dashboard" , path: route('dashboard')},
-                { title: "categories", icon: "mdi-bell" , path: route('categories.index')},
+                { title: "categories", icon: "mdi-bell" , path: route('category.index')},
+                { title: "Products", icon: "mdi-cart" , path: route('product.index')},
+                { title: "Discounts", icon: "mdi-star" , path: route('discount.index')},
             ]
         };
 		},

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,20 +19,20 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [ProductController::class , 'index' ])->name('shop');
+Route::get('/', [ProductController::class, 'shop'])->name('shop');
 
-Route::get('/cart', [CartController::class , 'show' ])->name('cart');
+Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 
 // Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::prefix('admin')->group(function () {
 
-    Route::get('/dashboard', function () {
+
+    Route::get('/', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
-    
-
+    Route::resource('discount', DiscountController::class);
 });

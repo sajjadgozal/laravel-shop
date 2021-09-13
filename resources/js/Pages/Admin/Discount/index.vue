@@ -2,13 +2,13 @@
     <layout>
         <v-data-table
             :headers="headers"
-            :items="categories"
+            :items="discounts"
             sort-by="name"
             class="elevation-1"
         >
             <template v-slot:top>
                 <v-toolbar flat>
-                    <v-toolbar-title>Categories</v-toolbar-title>
+                    <v-toolbar-title>Discounts</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
 
                     <v-spacer></v-spacer>
@@ -23,7 +23,7 @@
                                 v-bind="attrs"
                                 v-on="on"
                             >
-                                New Product
+                                New Discount
                             </v-btn>
                         </template>
                         <create-form
@@ -72,7 +72,7 @@
 
 <script>
 import layout from "@/Layouts/Layout";
-import delleteForm from "@/Components/DelleteForm";
+import delleteForm from "@/Components/DelleteForm"; 
 import editForm from "./edit";
 import createForm from "./create";
 
@@ -84,18 +84,14 @@ export default {
         delleteForm
     },
 
-    props: ["categories", "errors"],
+    props: ["discounts", "errors"],
 
     data: () => ({
         createDialog: false,
         deleteDialog: false,
         editDialog: false,
-        delleteRouteName: "category.destroy",
+        delleteRouteName: "discount.destroy",
         headers: [
-            {
-              text: 'id',
-              value: 'id'
-            },
             {
                 text: "Name",
                 align: "start",
@@ -103,14 +99,21 @@ export default {
                 value: "name"
             },
             {
-                text: "slug",
-                value: "slug"
+                text: "Description",
+                value: "description"
             },
-                        {
-                text: "content",
-                value: "content"
+            {
+                text: "Code",
+                value: "code"
             },
-
+            {
+                text: "Present",
+                value: "present"
+            },
+            {
+                text: "user",
+                value: "user_id"
+            },
             { text: "Actions", value: "actions", sortable: false }
         ],
 
