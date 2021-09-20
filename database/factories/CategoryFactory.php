@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class ProductFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Product::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -25,12 +25,8 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'slug' => Str::random(10),
-            'price'=> $this->faker->randomNumber(3),
-            'description' => $this->faker->paragraph(),
-            'inventory' =>  $this->faker->randomNumber(3),
-            'category_id' => 1 ,
-            'created_by_id'=> 1 ,
-            'image_url'=> $this->faker->imageUrl(640, 640, 'cats', true, 'Faker', false),
+            'content' => $this->faker->paragraph(),
+            'parent_id' => null ,
         ];
     }
 }

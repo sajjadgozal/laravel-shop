@@ -18,9 +18,12 @@
 
             <ul>
                 <template v-for="product in products">
-                    <li>{{ product.name }}</li>
-                    <Link :href="$route('addToCart' , product.id )"  preserve-scroll >add to cart</Link>
-                    <v-divider inset ></v-divider>
+                    <div>
+                        <img :src=product.image_url>
+                        <li>{{ product.name }}</li>
+                        <Link :href="$route('addToCart' , product.id )"  preserve-scroll >add to cart</Link>
+                        <v-divider inset ></v-divider>
+                    </div>
                 </template>
             </ul>
 

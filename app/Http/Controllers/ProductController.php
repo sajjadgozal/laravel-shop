@@ -19,6 +19,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+//        $products = Product::sellect('id','name')
+//            ->with('category:id,name')
+//            ->all();
+
         $products = Product::all();
 
         return Inertia::render('Admin/Product', [

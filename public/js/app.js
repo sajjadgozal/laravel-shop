@@ -5707,6 +5707,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 console.log(route("addToCart", 1));
@@ -40346,20 +40349,28 @@ var render = function() {
         [
           _vm._l(_vm.products, function(product) {
             return [
-              _c("li", [_vm._v(_vm._s(product.name))]),
-              _vm._v(" "),
               _c(
-                "Link",
-                {
-                  attrs: {
-                    href: _vm.$route("addToCart", product.id),
-                    "preserve-scroll": ""
-                  }
-                },
-                [_vm._v("add to cart")]
-              ),
-              _vm._v(" "),
-              _c("v-divider", { attrs: { inset: "" } })
+                "div",
+                [
+                  _c("img", { attrs: { src: product.image_url } }),
+                  _vm._v(" "),
+                  _c("li", [_vm._v(_vm._s(product.name))]),
+                  _vm._v(" "),
+                  _c(
+                    "Link",
+                    {
+                      attrs: {
+                        href: _vm.$route("addToCart", product.id),
+                        "preserve-scroll": ""
+                      }
+                    },
+                    [_vm._v("add to cart")]
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider", { attrs: { inset: "" } })
+                ],
+                1
+              )
             ]
           })
         ],

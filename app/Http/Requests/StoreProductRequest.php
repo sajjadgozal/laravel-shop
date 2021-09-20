@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'name' => 'required|max:256',
             'price' => 'required|max:600',
             'description'=> 'required',
-            'category_id'=> 'required'
+            'category_id'=> 'required|exists:App\Models\Category,id'
         ];
     }
 }
